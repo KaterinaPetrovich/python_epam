@@ -1,7 +1,7 @@
 from typing import List
 
 
-def check_sum_of_four(a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
+def check_four(a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
     sums = {}
     for i in a:
         for j in b:
