@@ -12,5 +12,6 @@ def generate_fib(n: int) -> Sequence[int]:
     if n == 1:
         return [0]
     fib = [0, 1]
-    fib = [fib[i - 1] + fib[i - 2] for i in range(2, n)]
+    for i in range(2, n):
+        fib.append(fib[i - 1] + fib[i - 2])
     return fib
