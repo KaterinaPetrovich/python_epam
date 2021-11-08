@@ -1,4 +1,4 @@
-from .task2 import check_fibonacci, generate_fib
+from homework1.task2 import check_fibonacci, generate_fib
 
 
 def test_positive_check_fibonacci():
