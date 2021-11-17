@@ -4,7 +4,8 @@ from homework2.task1 import (count_non_ascii_chars, count_punctuation_chars,
 
 
 def test_get_longest_diverse_words():
-    assert "unmißverständliche" in get_longest_diverse_words("./homework2/data.txt")
+    assert "unmißverständliche" \
+           in get_longest_diverse_words("./homework2/data.txt")
 
 
 def test_get_rarest_char():
