@@ -3,8 +3,8 @@ from typing import List
 
 
 def custom_range(inp, stop_value, start=0, step=1) -> List:
-    all(isinstance(item, type(inp[0])) for item in inp)
-    if not isinstance(inp, Iterable) or not all(isinstance(item, type(inp[0])) for item in inp):
+    t = type(inp[0])
+    if not (isinstance(inp, Iterable) or all(isinstance(item, t) for item in inp)):
         raise ValueError("Invalid input")
     stop = inp.index(stop_value)
     if start != 0:

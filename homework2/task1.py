@@ -4,12 +4,12 @@ from typing import List
 
 def get_longest_diverse_words(file_path: str) -> List[str]:
     with open(file_path, encoding="unicode-escape") as file:
-        longest_words = ["" for n in range(10)]
+        long_w = ["" for n in range(10)]
         for word in tokenize(file):
-            for i, longest_word in enumerate(longest_words):
-                if len(set(word)) > len(longest_word) and word not in longest_words:
-                    longest_words[i] = word
-    return ["".join(x) for x in longest_words]
+            for i, long_word in enumerate(long_w):
+                if len(set(word)) > len(long_word) and word not in long_w:
+                    long_w[i] = word
+    return ["".join(x) for x in long_w]
 
 
 def tokenize(file):
