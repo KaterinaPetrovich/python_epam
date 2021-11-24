@@ -1,8 +1,8 @@
-import time
-import struct
-import random
-import hashlib
 import concurrent.futures
+import hashlib
+import random
+import struct
+import time
 
 
 def slow_calculate(value):
