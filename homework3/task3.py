@@ -1,4 +1,4 @@
-from typing import Callable, Dict, List
+from typing import Callable, List
 
 
 class Filter:
@@ -17,11 +17,9 @@ class Filter:
         ]
 
 
-# example of usage:positive_even = Filter([lambda a: a % 2 == 0, lambda a: a > 0, lambda a: isinstance(a, int)])
+# example of usage:
+# positive_even = Filter([lambda a: a % 2 == 0, lambda a: a > 0])
 # should return only even numbers from 0 to 99
-
-print(positive_even.apply(range(100)))
-
 
 def make_filter(**keywords):
     """
@@ -51,4 +49,5 @@ sample_data = [
     }
 ]
 
-# There are multiple bugs in this code. Find them all and write tests for faulty cases.
+# There are multiple bugs in this code.
+# Find them all and write tests for faulty cases.
