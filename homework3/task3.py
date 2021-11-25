@@ -27,8 +27,8 @@ def make_filter(**keywords):
     """
     filter_funcs = []
     for key, value in keywords.items():
-        def keyword_filter_func(data):
-            return data[key] == value
+        def keyword_filter_func(value2, value=value, key = key):
+            return value2.get(key) == value
 
         filter_funcs.append(keyword_filter_func)
     return Filter(filter_funcs)
@@ -46,6 +46,11 @@ sample_data = [
         "kind": "parrot",
         "type": "bird",
         "name": "polly"
+    },
+    {
+        "is_dead": True,
+        "kind": "parrot",
+        "type": "bird",
     }
 ]
 
