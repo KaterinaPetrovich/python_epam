@@ -1,4 +1,4 @@
-from homework5.task1 import Homework, Student, Teacher
+from homework5.task1 import Student, Teacher
 
 teacher = Teacher("Daniil", "Shadrin")
 student = Student("Roman", "Petrov")
