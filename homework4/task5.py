@@ -1,6 +1,3 @@
-from itertools import zip_longest
-
-
 def fizzbuzz(n: int):
     """
     >>> fizzbuzz(6)
