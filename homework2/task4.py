@@ -12,19 +12,3 @@ def cache(func: Callable) -> Callable:
             return memo[args]
 
     return wrapper
-
-
-def function():
-    return input('? ')
-
-cache_func = cache(function)
-'''
-cache_func()
-print("g")
-cache_func()
-print("b")
-cache_func()
-'''
-
-cache_func()
-cache_func()
