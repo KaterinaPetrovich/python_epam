@@ -1,21 +1,21 @@
 from homework3.task1 import cache
 
 
-@cache(times=2)
-def function(a, b):
-    return a + b
-
-
-def test_cache():
-    some = "asdfghjkl", "qwertyuiop"
-    a = function(*some)
-    b = function(*some)
-    assert a is b
-
-
 def test_out_of_max_times_cache():
-    some = "asdfghjkl", "qwertyuiop"
-    a = function(*some)
+    counter = 0
+
+    @cache(times=2)
+    def function(a, b):
+        nonlocal counter
+        counter += 1
+        return a+b
+
+    some = 100, 200
     function(*some)
-    c = function(*some)
-    assert a is not c
+    function(*some)
+    function(*some)
+    assert counter == 2
+
+
+
+
