@@ -15,7 +15,3 @@ def test_out_of_max_times_cache():
     function(*some)
     function(*some)
     assert counter == 2
-
-
-
-
