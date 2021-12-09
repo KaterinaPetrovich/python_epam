@@ -6,14 +6,14 @@ teacher = Teacher("Daniil", "Shadrin")
 student = Student("Roman", "Petrov")
 
 oop_homework = teacher.create_homework("create 2 simple classes", 5)
-good_result = student.do_homework(oop_homework, "solution")
+good_res = student.do_homework(oop_homework, "solution")
 another_good_result = student.do_homework(oop_homework, "another solution")
 bad_result = student.do_homework(oop_homework, "bad")
 expired_homework = teacher.create_homework("expired", 0)
 
 
 def test_do_homework_creation_homework_result():
-    assert good_result.solution == "solution"
+    assert good_res.solution == "solution"
 
 
 def test_do_expired_homework():
@@ -22,8 +22,8 @@ def test_do_expired_homework():
 
 
 def test_check_homework_add_to_homework_done():
-    teacher.check_homework(good_result)
-    assert Teacher.homework_done.get(good_result.homework) == good_result.solution
+    teacher.check_homework(good_res)
+    assert Teacher.homework_done.get(good_res.homework) == good_res.solution
 
 
 def test_reset_results():
