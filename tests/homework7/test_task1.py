@@ -1,6 +1,5 @@
 from homework7.task1 import find_occurrences
 
-
 example_tree = {
     "first": ["RED", "BLUE"],
     "second": {
