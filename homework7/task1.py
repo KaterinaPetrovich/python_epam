@@ -1,5 +1,5 @@
-from typing import Any
 from collections import abc
+from typing import Any
 
 
 def find_occurrences(obj: dict, element: Any, counter) -> int:
