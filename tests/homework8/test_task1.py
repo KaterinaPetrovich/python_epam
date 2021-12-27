@@ -1,6 +1,6 @@
 from homework8.task1 import KeyValueStorage
 
-storage = KeyValueStorage(".homework8/task1.txt")
+storage = KeyValueStorage("./homework8/task1.txt")
 
 
 def test_getitem():
