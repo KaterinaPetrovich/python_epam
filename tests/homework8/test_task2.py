@@ -1,6 +1,6 @@
 from homework8.task2 import TableData
 
-presidents = TableData(database_name="example.sqlite", table_name="presidents")
+presidents = TableData(database_name="./homework8/example.sqlite", table_name="presidents")
 
 
 def test_contains():
