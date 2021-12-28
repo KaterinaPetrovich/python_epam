@@ -1,5 +1,3 @@
-import tempfile
-
 from homework9.task3 import universal_file_counter
 
 
