@@ -9,11 +9,12 @@ from homework9.task3 import universal_file_counter
 @pytest.fixture()
 def temp_dir():
     with tempfile.TemporaryDirectory() as directory:
-        with open(temp_directory / "file1.txt", "w") as file:
+        temp_dir = Path(str(directory))
+        with open(temp_dir / "file1.txt", "w") as file:
             file.write("1 \n2")
-        with open(temp_directory / "file2.txt", "w") as file:
+        with open(temp_dir / "file2.txt", "w") as file:
             file.write("1 2\n 4")
-        yield Path(str(directory))
+        yield temp_dir
 
 
 def test_universal_file_counter_without_tokenizer(temp_dir):
