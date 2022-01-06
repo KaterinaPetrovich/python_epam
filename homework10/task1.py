@@ -20,11 +20,14 @@ def get_info_from_the_main_page():
         for row in body.find_all("tr"):
             company = row.find("td", class_="table__td table__td--big").a.text
             link = (
-                base_url + row.find("td", class_="table__td table__td--big").a["href"]
+                base_url + row.find("td", class_="table__td table__td--big")
+                .a["href"]
             )
             company_link.append([company, link])
             change = row.find_all("span")[-1].text
-            companies[company] = {"name": company, "link": link, "change": change}
+            companies[company] = {"name": company,
+                                  "link": link,
+                                  "change": change}
 
     return companies, company_link
 
@@ -38,10 +41,12 @@ def get_info_from_the_company_page(companies, company_link):
     for company_soup in companies_soup:
         company = company_soup[0]
         soup = company_soup[1]
-        code = soup.find("span", class_="price-section__category").span.text.strip(
+        code = soup.find("span", class_="price-section__category")\
+            .span.text.strip(
             " , ,"
         )
-        price = soup.find("span", class_="price-section__current-value").text.replace(
+        price = soup.find("span", class_="price-section__current-value")\
+            .text.replace(
             ",", ""
         )
         price = round(float(price) * usd_rate, 2)
@@ -97,7 +102,8 @@ def get_current_usd_rate():
     cbr_url = "http://www.cbr.ru/scripts/XML_daily.asp?date_req="
     page = requests.get(cbr_url)
     soup = BeautifulSoup(page.text, "lxml")
-    return float(soup.find("valute", id="R01235").value.text.replace(",", "."))
+    return float(soup.find("valute", id="R01235")
+                 .value.text.replace(",", "."))
 
 
 def get_sorted(companies, key, number, reverse):
@@ -114,4 +120,5 @@ def create_json_files_top(companies):
     with open("top_high_change.json", "w") as fp:
         json.dump(get_sorted(companies, "change", 10, True), fp, indent=6)
     with open("top_high_potential_profit.json", "w") as fp:
-        json.dump(get_sorted(companies, "potential_profit", 10, True), fp, indent=6)
+        json.dump(get_sorted(companies, "potential_profit", 10, True),
+                  fp, indent=6)
