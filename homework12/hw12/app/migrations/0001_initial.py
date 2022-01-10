@@ -16,7 +16,8 @@ class Migration(migrations.Migration):
             name='Homework',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True,
-                                           serialize=False, verbose_name='ID')),
+                                           serialize=False,
+                                           verbose_name='ID')),
                 ('text', models.TextField()),
                 ('deadline', models.IntegerField()),
                 ('created', models.DateTimeField(auto_now_add=True)),
@@ -25,7 +26,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Student',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True,
+                ('id', models.BigAutoField(auto_created=True,
+                                           primary_key=True,
                                            serialize=False, verbose_name='ID')),
                 ('first_name', models.CharField(max_length=100)),
                 ('last_name', models.CharField(max_length=100)),
@@ -34,8 +36,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Teacher',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True,
-                                           serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                                           primary_key=True,
+                                           serialize=False,
+                                           verbose_name='ID')),
                 ('first_name', models.CharField(max_length=100)),
                 ('last_name', models.CharField(max_length=100)),
             ],
@@ -43,8 +47,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='HomeworkResult',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True,
-                                           serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                                           primary_key=True,
+                                           serialize=False,
+                                           verbose_name='ID')),
                 ('solution', models.TextField()),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('author', models.ForeignKey(
