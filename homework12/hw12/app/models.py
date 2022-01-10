@@ -15,7 +15,7 @@ class Homework(models.Model):
     text = models.TextField()
     deadline = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(Teacher,on_delete=models.CASCADE)
+    author = models.ForeignKey(Teacher, on_delete=models.CASCADE)
 
 
 class HomeworkResult(models.Model):
@@ -23,4 +23,3 @@ class HomeworkResult(models.Model):
     author = models.ForeignKey(Student, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     task = models.ForeignKey(Homework, on_delete=models.CASCADE)
-
