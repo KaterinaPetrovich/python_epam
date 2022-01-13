@@ -1,8 +1,7 @@
 import asyncio
-
 import json
-import aiohttp
 
+import aiohttp
 import requests
 from bs4 import BeautifulSoup, SoupStrainer
 
@@ -27,26 +26,20 @@ def parse_main_page(page):
     comp = []
     for row in body.find_all("tr"):
         company = row.find("td", class_="table__td table__td--big").a.text
-        link = (
-                base_url + row.find("td", class_="table__td table__td--big")
-                .a["href"]
-        )
+        link = base_url + row.find(
+            "td", class_="table__td table__td--big").a["href"]
 
         change = row.find_all("span")[-1].text
-        comp.append({"name": company,
-                     "link": link,
-                     "change": change})
+        comp.append({"name": company, "link": link, "change": change})
     return comp
 
 
 def parse_company_page(page):
     product = SoupStrainer("div", {"class": "graviton"})
     soup = BeautifulSoup(page, "html.parser", parse_only=product)
-    code = soup.find("span", class_="price-section__category") \
-        .span.text.strip(
-        " , ,"
-    )
-    price = soup.find("span", class_="price-section__current-value") \
+    code = soup.find("span", class_="price-section__category")\
+        .span.text.strip(" , ,")
+    price = soup.find("span", class_="price-section__current-value")\
         .text.replace(
         ",", ""
     )
@@ -98,8 +91,8 @@ def get_potential_profit(page_soup):
     week_high_piece = page_soup.find_all(
         "div",
         class_="snapshot__data-item "
-               "snapshot__data-item--small "
-               "snapshot__data-item--right",
+        "snapshot__data-item--small "
+        "snapshot__data-item--right",
     )[-1]
     if "52 Week Low" in week_low_piece.text:
         low = float(week_low_piece.contents[0].strip().replace(",", ""))
@@ -113,8 +106,7 @@ def get_current_usd_rate():
     cbr_url = "http://www.cbr.ru/scripts/XML_daily.asp?date_req="
     page = requests.get(cbr_url)
     soup = BeautifulSoup(page.text, "lxml")
-    return float(soup.find("valute", id="R01235")
-                 .value.text.replace(",", "."))
+    return float(soup.find("valute", id="R01235").value.text.replace(",", "."))
 
 
 def get_sorted(companies, key, number, reverse):
@@ -139,7 +131,7 @@ async def main():
     create_json_files_top(comp)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     loop = asyncio.new_event_loop()
     loop.run_until_complete(main())
     loop.close()
