@@ -1,5 +1,5 @@
 import asyncio
-import concurrent.futures
+
 import json
 import aiohttp
 
@@ -18,34 +18,6 @@ async def fetch_responses(urls):
     tasks = [asyncio.create_task(fetch_response(url)) for url in urls]
     await asyncio.gather(*tasks)
     return [task.result() for task in tasks]
-
-
-async def get_info_from_the_main_page():
-    base_url = "https://markets.businessinsider.com"
-    main_url = "https://markets.businessinsider.com/index/components/s&p_500"
-    urls = [main_url + "?p=" + str(n) for n in range(1, 12)]
-    pages = await fetch_responses(urls)
-    # company_link = []
-    companies = {}
-
-    for page in pages:
-        # page = requests.get(url)
-        soup = BeautifulSoup(page.text, "html.parser")
-        body = soup.find("tbody", class_="table__tbody")
-
-        for row in body.find_all("tr"):
-            company = row.find("td", class_="table__td table__td--big").a.text
-            link = (
-                    base_url + row.find("td", class_="table__td table__td--big")
-                    .a["href"]
-            )
-            # company_link.append([company, link])
-            change = row.find_all("span")[-1].text
-            companies[company] = {"name": company,
-                                  "link": link,
-                                  "change": change}
-
-    return companies
 
 
 def parse_main_page(page):
@@ -94,7 +66,6 @@ async def fill_dict():
     usd_rate = get_current_usd_rate()
     urls = [main_url + "?p=" + str(n) for n in range(1, 12)]
     pages = await fetch_responses(urls)
-
     companies = []
 
     for page in pages:
