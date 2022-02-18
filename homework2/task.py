@@ -10,7 +10,7 @@ def test_str_out_of_range():
         "qwe"[12]
 
 
-@pytest.mark.parametrize("test_input", ["aaa", "AAA", aAA])
+@pytest.mark.parametrize("test_input", ["aaa", "AAA", "aAA"])
 def test_str_capitalize(test_input):
     assert test_input.capitalize() == "Aaa"
 
